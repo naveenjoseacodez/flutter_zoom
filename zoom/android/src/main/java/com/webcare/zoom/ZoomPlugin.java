@@ -133,7 +133,7 @@ public class ZoomPlugin implements FlutterPlugin, MethodCallHandler,ActivityAwar
             result.success(false);
             return;
         }
-
+        ZoomSDK.getInstance().getZoomUIService().hideMeetingInviteUrl(true);
         final MeetingService meetingService = zoomSDK.getMeetingService();
 
         JoinMeetingOptions opts = new JoinMeetingOptions();
