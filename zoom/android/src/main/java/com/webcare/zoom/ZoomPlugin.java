@@ -114,6 +114,7 @@ public class ZoomPlugin implements FlutterPlugin, MethodCallHandler,ActivityAwar
                         }
 
                         ZoomSDK zoomSDK = ZoomSDK.getInstance();
+                        ZoomSDK.getInstance().getZoomUIService().hideMeetingInviteUrl(true);
                         MeetingService meetingService = zoomSDK.getMeetingService();
                         meetingStatusChannel.setStreamHandler(new StatusStreamHandler(meetingService));
                         result.success(response);
