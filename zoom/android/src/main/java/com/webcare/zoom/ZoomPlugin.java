@@ -114,7 +114,7 @@ public class ZoomPlugin implements FlutterPlugin, MethodCallHandler,ActivityAwar
                         }
 
                         ZoomSDK zoomSDK = ZoomSDK.getInstance();
-                        ZoomSDK.getInstance().getZoomUIService().hideMeetingInviteUrl(true);
+                        zoomSDK.getZoomUIService().hideMeetingInviteUrl(true);
                         MeetingService meetingService = zoomSDK.getMeetingService();
                         meetingStatusChannel.setStreamHandler(new StatusStreamHandler(meetingService));
                         result.success(response);
@@ -134,11 +134,11 @@ public class ZoomPlugin implements FlutterPlugin, MethodCallHandler,ActivityAwar
             result.success(false);
             return;
         }
-        ZoomSDK.getInstance().getZoomUIService().hideMeetingInviteUrl(true);
+        zoomSDK.getZoomUIService().hideMeetingInviteUrl(true);
         final MeetingService meetingService = zoomSDK.getMeetingService();
 
         JoinMeetingOptions opts = new JoinMeetingOptions();
-        opts.no_invite = parseBoolean(options, "disableInvite", false);
+        opts.no_invite = parseBoolean(options, "disableInvite", true);
         opts.no_share = parseBoolean(options, "disableShare", false);
         opts.no_driving_mode = parseBoolean(options, "disableDrive", false);
         opts.no_dial_in_via_phone = parseBoolean(options, "disableDialIn", false);
